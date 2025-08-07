@@ -1,4 +1,4 @@
-import { boolean, pgTable, text, timestamp } from 'drizzle-orm/pg-core'
+import { boolean, integer, pgTable, text, timestamp } from 'drizzle-orm/pg-core'
 
 export const userTable = pgTable('user_table', {
     id: text('id').primaryKey(),
@@ -45,4 +45,17 @@ export const accountTable = pgTable('account_table', {
     password: text('password'),
     createdAt: timestamp('created_at').notNull(),
     updatedAt: timestamp('updated_at').notNull(),
+})
+
+export const verificationTable = pgTable('verification_table', {
+    id: text('id').primaryKey(),
+    identifier: text('identifier').notNull(),
+    value: text('value').notNull(),
+    expiresAt: timestamp('expires_at').notNull(),
+    createdAt: timestamp('created_at').$defaultFn(
+        () => /* @__PURE__ */ new Date()
+    ),
+    updatedAt: timestamp('updated_at').$defaultFn(
+        () => /* @__PURE__ */ new Date()
+    ),
 })
