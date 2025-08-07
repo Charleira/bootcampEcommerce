@@ -4,6 +4,7 @@ import Image from 'next/image'
 import CategorySelector from '@/components/common/category-selector'
 import Footer from '@/components/common/footer'
 import { Header } from '@/components/common/header'
+import PartnerList from '@/components/common/partners-list'
 import ProductList from '@/components/common/product-list'
 import { db } from '@/db'
 import { productTable } from '@/db/schema'
@@ -38,7 +39,20 @@ const Home = async () => {
                 </div>
 
                 <ProductList products={products} title="Mais vendidos" />
-
+                <PartnerList
+                    title="Marcas parceiras"
+                    partners={[
+                        { id: 1, name: 'Nike', logo: '/nike.png' },
+                        { id: 2, name: 'Adidas', logo: '/adidas.png' },
+                        { id: 3, name: 'Puma', logo: '/puma.png' },
+                        { id: 4, name: 'New Balance', logo: '/nb.png' },
+                        { id: 5, name: 'Giorgio Armani', logo: '/giorgio.png' },
+                        { id: 6, name: 'Champion', logo: '/champion.png' },
+                        { id: 7, name: 'Converse', logo: '/converse.png' },
+                        { id: 8, name: 'Polo Wear', logo: '/polo.png' },
+                        { id: 9, name: 'Zara', logo: '/zara.png' },
+                    ]}
+                />
                 <div className="px-5">
                     <CategorySelector categories={categories} />
                 </div>
